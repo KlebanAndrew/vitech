@@ -1,0 +1,6 @@
+1. Show error component
+2. Upload file component
+3. Show message component
+4. Move template from blade to html
+5. Maybe remove directives.js and notify module
+6. Do auth pages
