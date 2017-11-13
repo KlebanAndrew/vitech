@@ -5,12 +5,11 @@
         .controller('MessagesCtrl.main', MessagesCtrl_main)
     ;
 
-    MessagesCtrl_main.$inject = ['BreadcrumbsService'];
+    MessagesCtrl_main.$inject = ['HttpService'];
 
-    function MessagesCtrl_main(BreadcrumbsService) {
+    function MessagesCtrl_main(HttpService) {
         var vm = this;
 
-        BreadcrumbsService.push('Offer List');
 
     }
 

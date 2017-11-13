@@ -24,7 +24,7 @@
                 url: '?type',
                 views: {
                     content: {
-                        controller: 'HomeCtrl.main as ctrl',
+                        controller: 'MessagesCtrl.main as ctrl',
                         templateUrl: '/app/modules/messages/main.html'
                     }
                 },

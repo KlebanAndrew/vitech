@@ -16,7 +16,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333">
     <meta name="theme-color" content="#ffffff">
 
-<!-- inject:vendor:js-->
+<!-- injector:js-->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/perfect-scrollbar/min/perfect-scrollbar.min.js"></script>
@@ -39,16 +39,16 @@
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
     <script src="/bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
-    <!-- endinject-->
+    <!-- endinjector-->
 
     <!-- inject:app:js-->
     <script src="/app/filters/common.js"></script>
     <script src="/app/app.js"></script>
+    <script src="/app/services/services.js"></script>
     <script src="/app/directives/main/main.js"></script>
     <script src="/app/components/directives.js"></script>
     <script src="/app/components/pagination/pagination.js"></script>
     <script src="/app/components/notify.js"></script>
-    <script src="/app/services/services.js"></script>
     <script src="/app/modules/navbar/navbar.js"></script>
     <script src="/app/modules/messages/messages.mdl.js"></script>
     <script src="/app/modules/messages/messages.srv.js"></script>
@@ -56,7 +56,7 @@
     <script src="/js/sidebar.js"></script>
     <!-- endinject-->
 
-    <!-- inject:libscss:css-->
+    <!-- injector:css-->
     <link rel="stylesheet" href="/bower_components/perfect-scrollbar/min/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="/bower_components/photoswipe/dist/photoswipe.css">
     <link rel="stylesheet" href="/bower_components/photoswipe/dist/default-skin/default-skin.css">
@@ -68,14 +68,13 @@
     <link rel="stylesheet" href="/bower_components/summernote/dist/summernote.css">
     <link rel="stylesheet" href="/bower_components/isteven-angular-multiselect/isteven-multi-select.css">
     <link rel="stylesheet" href="/bower_components/angularjs-datepicker/dist/angular-datepicker.css">
-    <link rel="stylesheet" href="/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/pace-theme-flash.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/fonts/font-fontello/css/fontello.css">
     <link rel="stylesheet" href="/css/pages.css">
     <link rel="stylesheet" href="/css/pages-icons.css">
-    <!-- endinject-->
+    <!-- endinjector-->
 
     <!-- BEGIN CSS TEMPLATE -->
 <!-- END CSS TEMPLATE -->

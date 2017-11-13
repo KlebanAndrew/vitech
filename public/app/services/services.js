@@ -8,7 +8,6 @@
         .factory('authInterceptor', authInterceptor)
         .service('HttpService', HttpService)
         .service('SeoService', SeoService)
-        .service('BreadCrumbsService', BreadCrumbsService)
     ;
 
     postInterceptor.$inject = ['$q'];
@@ -227,43 +226,6 @@
         function getTitleSeparator() {
             return ' - App';
         }
-    }
-
-    function BreadCrumbsService($state) {
-        this.addCrumb = function (label, state, params) {
-            state = state || false;
-            params = params || false;
-
-            crumbs.push({
-                label: label,
-                state: state,
-                params: params,
-                crumb_href: params ? this.crumb_href(state, params) : ''
-            });
-        };
-        //use this func for state with params
-        this.crumb_href = function (state, params) {
-            return $state.href(state, params, { absolute: true });
-        };
-
-        this.getCrumbs = function () {
-            return crumbs;
-        };
-
-        this.clear = function () {
-            crumbs = this.init();
-        };
-
-        this.init = function () {
-            return [
-                {
-                    state: 'app.main',
-                    label: 'app'
-                }
-            ];
-        };
-
-        var crumbs = this.init();
     }
 
 })();

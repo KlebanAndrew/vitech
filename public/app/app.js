@@ -37,11 +37,10 @@
         $urlRouterProvider.otherwise('/');
     }
 
-    runBlock.$inject = ['$rootScope', 'SeoService', 'BreadCrumbsService'];
+    runBlock.$inject = ['$rootScope', 'SeoService'];
 
-    function runBlock($rootScope, SeoService, BreadCrumbsService) {
+    function runBlock($rootScope, SeoService) {
         $rootScope.$on('$stateChangeStart', function (event, toState) {
-            BreadCrumbsService.clear();
             $rootScope.stateData = toState.data;
             SeoService.setTitleFromState(toState);
         });
@@ -51,7 +50,7 @@
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, to, toParams, from, fromParams) {
-            $rootScope.breadCrumbs = BreadCrumbsService.getCrumbs();
+
         });
 
         //Functions for SEO
