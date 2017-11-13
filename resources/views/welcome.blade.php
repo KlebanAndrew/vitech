@@ -50,7 +50,9 @@
     <script src="/app/components/notify.js"></script>
     <script src="/app/services/services.js"></script>
     <script src="/app/modules/navbar/navbar.js"></script>
-    <script src="/app/modules/home/home.js"></script>
+    <script src="/app/modules/messages/messages.mdl.js"></script>
+    <script src="/app/modules/messages/messages.srv.js"></script>
+    <script src="/app/modules/messages/messages.ctr.js"></script>
     <script src="/js/sidebar.js"></script>
     <!-- endinject-->
 

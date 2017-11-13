@@ -18,7 +18,7 @@
         'shared.notify',//service for notification
 
         //modules
-        'app.home'//home page
+        'app.messages'//home page
     ])
         .run(runBlock)
         .config(configure);
