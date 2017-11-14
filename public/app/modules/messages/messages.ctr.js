@@ -11,6 +11,16 @@
     function MessagesCtrl_main($state) {
         var vm = this;
 
+        vm.openMessage = {};
+        vm.messageListOptions = {
+            type: 'inbox'
+        };
+
+        vm.showList = showList;
+
+        function showList(type) {
+            vm.messageListOptions.type = type;
+        }
     }
 
     MessagesCtrl_create.$inject = ['contactsList'];

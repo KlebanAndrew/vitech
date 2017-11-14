@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\StoreMessageReplyRequest;
 use App\Http\Requests\StoreUserMessageRequest;
 use App\Repositories\UserMessagesRepository;
 use Illuminate\Http\Request;
@@ -73,6 +74,20 @@ class UserMessagesController extends Controller
         $user = Auth::user();
 
         $result = $this->userMessagesRepository->createMessage($data, $user);
+
+        if (!$result) {
+            return response()->json($request->all(), 500);
+        }
+
+        return response()->json('Saved');
+    }
+
+    public function storeReply(StoreMessageReplyRequest $request)
+    {
+        $data = $request->all();
+        $user = Auth::user();
+
+        $result = $this->userMessagesRepository->createMessageReply($data, $user);
 
         if (!$result) {
             return response()->json($request->all(), 500);

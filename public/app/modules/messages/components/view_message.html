@@ -1,0 +1,31 @@
+<div class="row m-t-20 bordered">
+    <div class="col-md-24">
+        {{ $ctrl.message.sender.email }}
+    </div>
+    <div class="col-md-24">
+        {{ $ctrl.message.subject }}
+    </div>
+    <div class="col-md-24">
+        {{ $ctrl.message.text }}
+    </div>
+</div>
+<div class="row m-t-20 bordered m-t-5">
+        <div class="col-md-24">
+            <div class="form-group form-textarea">
+                <div id="summernote">
+                    <summernote
+                        ng-model="$ctrl.reply.text"
+                    >
+                    </summernote>
+                </div>
+            </div><!-- form-group form-textarea -->
+            <ul ng-if="$ctrl.errors.text" class="form-errors">
+                <li ng-repeat="error in $ctrl.errors.text">
+                    <label class="error" ng-bind="::error"></label>
+                </li>
+            </ul><!-- errors -->
+        </div>
+        <div class="col-md-2 col-md-offset-22">
+            <button ng-click="$ctrl.sendReply()" class="btn btn-success">Send</button>
+        </div>
+</div>

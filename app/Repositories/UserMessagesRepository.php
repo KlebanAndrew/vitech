@@ -20,7 +20,7 @@ class UserMessagesRepository
      */
     public function getSendList($user)
     {
-        return $user->sentMessages()->paginate();
+        return $user->sentMessages()->with('sender')->paginate();
     }
 
     /**
@@ -30,7 +30,7 @@ class UserMessagesRepository
      */
     public function getInboxList($user)
     {
-        return $user->receivedMessages()->paginate();
+        return $user->receivedMessages()->with('sender')->paginate();
     }
 
     /**
@@ -40,9 +40,25 @@ class UserMessagesRepository
      */
     public function getDraftList($user)
     {
-        return $user->draftMessages()->paginate();
+        return $user->draftMessages()->with('sender')->paginate();
     }
 
+    public function createMessageReply($data, $user)
+    {
+        $message = UserMessage::create([
+            'sender_id' => $user->id,
+            'subject'   => $data['subject'],
+            'text'      => $data['text']
+        ]);
+
+        if ($message) {
+            $message->receivers()->sync($data['receiver']['id']);
+
+            return true;
+        }
+
+        return false;
+    }
     /**
      * @param $data
      * @param $user

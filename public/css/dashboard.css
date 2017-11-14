@@ -11148,7 +11148,9 @@ select {
 */
 .b-b-none {
   border-bottom: 0 solid !important; }
-
+.bordered {
+  border-style: solid;
+}
 .b-a,
 .b-r,
 .b-l,

@@ -14,7 +14,8 @@
             contactsList: contactsListFn,
             getSendMessagesList: getSendMessagesListFn,
             getInboxMessagesList: getInboxMessagesListFn,
-            getDraftMessagesList: getDraftMessagesList,
+            getDraftMessagesList: getDraftMessagesListFn,
+            getMessagesListByType: getMessagesListByTypeFn,
             getMessage: getMessageFn,
             formatDate: formatDateFn
         };
@@ -46,7 +47,7 @@
          *
          * @param page
          */
-        function getInboxMessagesList(page) {
+        function getInboxMessagesListFn(page) {
             page = page || 1;
 
             return $http.get('api/messages/inbox', {page: page});
@@ -57,12 +58,39 @@
          *
          * @param page
          */
-        function getDraftMessagesList(page) {
+        function getDraftMessagesListFn(page) {
             page = page || 1;
 
             return $http.get('api/messages/draft', {page: page});
         }
 
+        /**
+         * Return paginate list of messages
+         *
+         * @param type
+         * @param page
+         */
+        function getMessagesListByTypeFn(type, page) {
+            type = type || 'inbox';
+
+            switch(type) {
+                case 'inbox':
+                     return getInboxMessagesListFn(page);
+                    break;
+
+                case 'send':
+                    return getSendMessagesListFn(page);
+                    break;
+
+                case 'draft':
+                    return getDraftMessagesListFn(page);
+                    break;
+
+                default:
+                    return getInboxMessagesListFn(page);
+                    break;
+            }
+        }
         /**
          * Get message
          *

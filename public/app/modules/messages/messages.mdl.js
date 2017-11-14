@@ -29,12 +29,7 @@
                     }
                 },
                 resolve: {
-                    items: [
-                        'MessagesService', '$stateParams',
-                        function (MessagesService, $stateParams) {
-                            return MessagesService.getMessagesList($stateParams.type || 'received');
-                        }
-                    ]
+
                 }
             })
             .state('messages.create', {
@@ -43,6 +38,23 @@
                     content: {
                         controller: 'MessagesCtrl.create as ctrl',
                         templateUrl: '/app/modules/messages/create.html'
+                    }
+                },
+                resolve: {
+                    contactsList: [
+                        'MessagesService',
+                        function (MessagesService) {
+                            return MessagesService.contactsList();
+                        }
+                    ]
+                }
+            })
+            .state('messages.draft', {
+                url: 'draft',
+                views: {
+                    content: {
+                        controller: 'MessagesCtrl.draft as ctrl',
+                        templateUrl: '/app/modules/messages/draft.html'
                     }
                 },
                 resolve: {
