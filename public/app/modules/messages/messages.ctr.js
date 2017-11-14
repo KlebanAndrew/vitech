@@ -6,19 +6,19 @@
         .controller('MessagesCtrl.create', MessagesCtrl_create)
     ;
 
-    MessagesCtrl_main.$inject = [''];
+    MessagesCtrl_main.$inject = ['$state'];
 
-    function MessagesCtrl_main() {
+    function MessagesCtrl_main($state) {
         var vm = this;
-
 
     }
 
-    MessagesCtrl_create.$inject = [''];
+    MessagesCtrl_create.$inject = ['receiversList'];
 
-    function MessagesCtrl_create() {
+    function MessagesCtrl_create(receiversList) {
         var vm = this;
 
+        vm.contacts = receiversList.data;
 
     }
 

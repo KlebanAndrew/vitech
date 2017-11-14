@@ -35,9 +35,12 @@
     "public/app/modules/messages/messages.mdl.js",
     "public/app/modules/messages/messages.ctr.js",
     "public/app/modules/messages/messages.srv.js",
+    "public/app/modules/messages/components/messages.cmp.js",
     "public/js/sidebar.js"
   ],
   "css": [
+    "public/bower_components/font-awesome/css/font-awesome.min.css",
+    "public/bower_components/summernote/dist/summernote.css",
     "public/bower_components/perfect-scrollbar/min/perfect-scrollbar.min.css",
     "public/bower_components/photoswipe/dist/photoswipe.css",
     "public/bower_components/photoswipe/dist/default-skin/default-skin.css",
@@ -46,10 +49,8 @@
     "public/bower_components/angular-loading-bar/build/loading-bar.min.css",
     "public/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css",
     "public/bower_components/angular-bootstrap-datepicker/dist/angular-bootstrap-datepicker.css",
-    "public/bower_components/summernote/dist/summernote.css",
     "public/bower_components/isteven-angular-multiselect/isteven-multi-select.css",
     "public/bower_components/angularjs-datepicker/dist/angular-datepicker.css",
-    "public/bower_components/font-awesome/css/font-awesome.min.css",
     "public/css/pace-theme-flash.css",
     "public/css/dashboard.css",
     "public/css/pages.css",

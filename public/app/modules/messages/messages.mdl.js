@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('app.messages', [//todo maybe rename to messages
-            // 'app.home.components'
+        .module('app.messages', [
+            'app.messages.components'
         ])
         .config(configure);
 
@@ -38,7 +38,7 @@
                 }
             })
             .state('messages.create', {
-                url: '',
+                url: 'create',
                 views: {
                     content: {
                         controller: 'MessagesCtrl.create as ctrl',
@@ -46,7 +46,12 @@
                     }
                 },
                 resolve: {
-
+                    receiversList: [
+                        'MessagesService',
+                        function (MessagesService) {
+                            return MessagesService.contactsList();
+                        }
+                    ]
                 }
             });
     }

@@ -12,7 +12,7 @@ class UserMessage extends Model
      *
      * @var string
      */
-    protected $table = 'user_message';
+    protected $table = 'user_messages';
 
     /**
      * The attributes that are mass assignable.
@@ -61,8 +61,8 @@ class UserMessage extends Model
         return $this->belongsToMany(
             User::class,
             'user_message',
-            'user_id',
-            'message_id'
+            'message_id',
+            'user_id'
         );
     }
 }

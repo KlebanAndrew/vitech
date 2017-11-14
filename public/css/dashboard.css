@@ -8560,6 +8560,9 @@ select {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
 
+#summernote .note-editing-area {
+  height:250px;
+}
 #summernote .panel > .list-group,
 #summernote .panel > .panel-collapse > .list-group {
   margin-bottom: 0; }

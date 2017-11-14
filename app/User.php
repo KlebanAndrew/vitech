@@ -58,8 +58,8 @@ class User extends Authenticatable
         return $this->belongsToMany(
             UserMessage::class,
             'user_message',
-            'message_id',
-            'user_id'
+            'user_id',
+            'message_id'
         );
     }
 }

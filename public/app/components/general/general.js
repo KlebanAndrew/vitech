@@ -29,9 +29,22 @@
         }
     };
 
+    var contentHeader = {
+        bindings: {
+
+        },
+        templateUrl: 'app/components/general/content_header.html',
+
+        controller: function () {
+            var vm = this;
+
+        }
+    };
+
     angular
         .module('app.components.general', [])
         .component('authLogoutButton', authLogoutButton)
+        .component('contentHeader', contentHeader)
     ;
 
 })();

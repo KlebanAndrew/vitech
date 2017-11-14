@@ -7,14 +7,16 @@
         .service('MessagesService', MessagesService);
 
     MessagesService.$inject = ['$http'];
+
     function MessagesService($http) {
         var baseUrl = '/api/messages';
 
         return {
-            getMessagesList:       getMessagesListFn,
-            getMessage:           getMessageFn,
-            deleteMessage:        deleteMessageFn,
-            formatDate:         formatDateFn,
+            contactsList: contactsListFn,
+            getMessagesList: getMessagesListFn,
+            getMessage: getMessageFn,
+            deleteMessage: deleteMessageFn,
+            formatDate: formatDateFn
         };
 
         /**
@@ -23,12 +25,22 @@
          * @param type ('received', 'sent', 'draft')
          * @returns {*}
          */
+        function contactsListFn() {
+            return $http.get('api/contacts');//todo Make with HttpService
+        }
+
+        /**
+         * Get messages list
+         *
+         * @param type ('received', 'sent', 'draft')
+         * @returns {*}
+         */
         function getMessagesListFn(type) {
-            var params ={
+            var params = {
                 type: type
             };
 
-            return $http.get(baseUrl, {params: params});//todo Make with HttpService
+            return $http.get(baseUrl, { params: params });//todo Make with HttpService
         }
 
         /**
@@ -38,17 +50,17 @@
          * @returns {*}
          */
         function getMessageFn(id) {
-            return $http.get(baseUrl+'/'+ id)
+            return $http.get(baseUrl + '/' + id);
         }
 
         /**
          * Delete message
-         * 
+         *
          * @param id
          * @returns {*}
          */
         function deleteMessageFn(id) {
-            return $http.delete(baseUrl+'/'+ id)
+            return $http.delete(baseUrl + '/' + id);
         }
 
         /**
