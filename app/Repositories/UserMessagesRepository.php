@@ -12,6 +12,37 @@ use App\Model\UserMessage;
 
 class UserMessagesRepository
 {
+
+    /**
+     * @param $user
+     *
+     * @return mixed
+     */
+    public function getSendList($user)
+    {
+        return $user->sentMessages()->paginate();
+    }
+
+    /**
+     * @param $user
+     *
+     * @return mixed
+     */
+    public function getInboxList($user)
+    {
+        return $user->receivedMessages()->paginate();
+    }
+
+    /**
+     * @param $user
+     *
+     * @return mixed
+     */
+    public function getDraftList($user)
+    {
+        return $user->draftMessages()->paginate();
+    }
+
     /**
      * @param $data
      * @param $user
@@ -22,11 +53,11 @@ class UserMessagesRepository
     {
         $message = UserMessage::create([
             'sender_id' => $user->id,
-            'subject' => $data['subject'],
-            'text' => $data['text']
+            'subject'   => $data['subject'],
+            'text'      => $data['text']
         ]);
 
-        if($message){
+        if ($message) {
             $receivers = $this->makePivotArray($data['receivers']);
             $message->receivers()->sync($receivers);
 

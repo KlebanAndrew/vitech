@@ -10,7 +10,11 @@ Route::group([
     'middleware' => ['auth'],
 ], function () {
     Route::get('/contacts', 'Api\UsersController@getContacts');
+
     Route::post('/messages', 'Api\UserMessagesController@store');
+    Route::get('/messages/send', 'Api\UserMessagesController@sendList');
+    Route::get('/messages/inbox', 'Api\UserMessagesController@inboxList');
+    Route::get('/messages/draft', 'Api\UserMessagesController@draftList');
 });
 
 //Angular app routes

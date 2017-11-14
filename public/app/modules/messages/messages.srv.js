@@ -6,41 +6,61 @@
 
         .service('MessagesService', MessagesService);
 
-    MessagesService.$inject = ['$http'];
+    MessagesService.$inject = ['$http', 'HttpService'];
 
     function MessagesService($http) {
-        var baseUrl = '/api/messages';
 
-        return {
+        var service = {
             contactsList: contactsListFn,
-            getMessagesList: getMessagesListFn,
+            getSendMessagesList: getSendMessagesListFn,
+            getInboxMessagesList: getInboxMessagesListFn,
+            getDraftMessagesList: getDraftMessagesList,
             getMessage: getMessageFn,
-            deleteMessage: deleteMessageFn,
             formatDate: formatDateFn
         };
 
+        return service;
+
         /**
-         * Get messages list
+         * Get contacts list
          *
-         * @param type ('received', 'sent', 'draft')
          * @returns {*}
          */
         function contactsListFn() {
-            return $http.get('api/contacts');//todo Make with HttpService
+            return $http.get('api/contacts');
         }
 
         /**
-         * Get messages list
+         * Get send messages list
          *
-         * @param type ('received', 'sent', 'draft')
-         * @returns {*}
+         * @param page
          */
-        function getMessagesListFn(type) {
-            var params = {
-                type: type
-            };
+        function getSendMessagesListFn(page) {
+            page = page || 1;
 
-            return $http.get(baseUrl, { params: params });//todo Make with HttpService
+            return $http.get('api/messages/send', {page: page});
+        }
+
+        /**
+         * Get inbox messages list
+         *
+         * @param page
+         */
+        function getInboxMessagesList(page) {
+            page = page || 1;
+
+            return $http.get('api/messages/inbox', {page: page});
+        }
+
+        /**
+         * Get draft messages list
+         *
+         * @param page
+         */
+        function getDraftMessagesList(page) {
+            page = page || 1;
+
+            return $http.get('api/messages/draft', {page: page});
         }
 
         /**
@@ -51,16 +71,6 @@
          */
         function getMessageFn(id) {
             return $http.get(baseUrl + '/' + id);
-        }
-
-        /**
-         * Delete message
-         *
-         * @param id
-         * @returns {*}
-         */
-        function deleteMessageFn(id) {
-            return $http.delete(baseUrl + '/' + id);
         }
 
         /**

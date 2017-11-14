@@ -20,11 +20,46 @@ class UserMessagesController extends Controller
      *
      * @param UserMessagesRepository $userMessagesRepository
      */
-    public function __construct (
+    public function __construct(
         UserMessagesRepository $userMessagesRepository
-    )
-    {
+    ) {
         $this->userMessagesRepository = $userMessagesRepository;
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sendList()
+    {
+        $user = Auth::user();
+
+        $data = $this->userMessagesRepository->getSendList($user);
+
+        return response()->json($data);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function inboxList()
+    {
+        $user = Auth::user();
+
+        $data = $this->userMessagesRepository->getInboxList($user);
+
+        return response()->json($data);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function draftList()
+    {
+        $user = Auth::user();
+
+        $data = $this->userMessagesRepository->getDraftList($user);
+
+        return response()->json($data);
     }
 
     /**
@@ -39,7 +74,7 @@ class UserMessagesController extends Controller
 
         $result = $this->userMessagesRepository->createMessage($data, $user);
 
-        if(!$result){
+        if (!$result) {
             return response()->json($request->all(), 500);
         }
 

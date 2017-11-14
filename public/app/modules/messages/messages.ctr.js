@@ -13,7 +13,7 @@
 
     }
 
-    MessagesCtrl_create.$inject = ['receiversList'];
+    MessagesCtrl_create.$inject = ['contactsList'];
 
     function MessagesCtrl_create(contactsList) {
         var vm = this;

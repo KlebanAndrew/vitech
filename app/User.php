@@ -35,7 +35,7 @@ class User extends Authenticatable
      */
     public function sentMessages()
     {
-        return $this->hasMany(UserMessage::class, 'sender_id')-where('is_draft', 0);
+        return $this->hasMany(UserMessage::class, 'sender_id')->where('is_draft', 0);
     }
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
      */
     public function draftMessages()
     {
-        return $this->hasMany(UserMessage::class, 'sender_id')-where('is_draft', 1);
+        return $this->hasMany(UserMessage::class, 'sender_id')->where('is_draft', 1);
     }
 
     /**
