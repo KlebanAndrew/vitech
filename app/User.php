@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\UserMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,39 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Send messages list
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sentMessages()
+    {
+        return $this->hasMany(UserMessage::class, 'sender_id')-where('is_draft', 0);
+    }
+
+    /**
+     * Draft messages list
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function draftMessages()
+    {
+        return $this->hasMany(UserMessage::class, 'sender_id')-where('is_draft', 1);
+    }
+
+    /**
+     * Received messages list
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function receivedMessages()
+    {
+        return $this->belongsToMany(
+            UserMessage::class,
+            'user_message',
+            'message_id',
+            'user_id'
+        );
+    }
 }

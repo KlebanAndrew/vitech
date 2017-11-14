@@ -16,10 +16,9 @@ class CreateUserMessagesTable extends Migration
         Schema::create('user_messages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sender_id')->unsigned();
-            $table->integer('receiver_id')->unsigned();
-            $table->text('subject');
-            $table->text('status');
-            $table->longText('text');
+            $table->text('subject')->nullable();
+            $table->tinyInteger('is_draft')->default(0);
+            $table->longText('text')->nullable();
             $table->timestamps();
         });
     }
