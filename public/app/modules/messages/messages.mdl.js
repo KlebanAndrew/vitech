@@ -11,7 +11,7 @@
 
     function configure($stateProvider) {
         $stateProvider
-            .state('app', {
+            .state('messages', {
                 abstract: true,
                 url: '/',
                 views: {
@@ -20,7 +20,7 @@
                     }
                 }
             })
-            .state('app.main', {//todo maybe rename to app.messages
+            .state('messages.list', {
                 url: '?type',
                 views: {
                     content: {
@@ -35,6 +35,18 @@
                             return MessagesService.getMessagesList($stateParams.type || 'received');
                         }
                     ]
+                }
+            })
+            .state('messages.create', {
+                url: '',
+                views: {
+                    content: {
+                        controller: 'MessagesCtrl.create as ctrl',
+                        templateUrl: '/app/modules/messages/create.html'
+                    }
+                },
+                resolve: {
+
                 }
             });
     }
