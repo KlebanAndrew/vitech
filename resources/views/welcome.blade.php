@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title ng-bind="getSeoTitle()">Dashboard</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
     <link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
