@@ -15,10 +15,10 @@
 
     MessagesCtrl_create.$inject = ['receiversList'];
 
-    function MessagesCtrl_create(receiversList) {
+    function MessagesCtrl_create(contactsList) {
         var vm = this;
 
-        vm.contacts = receiversList.data;
+        vm.contacts = contactsList.data;
 
     }
 

@@ -46,7 +46,7 @@
                     }
                 },
                 resolve: {
-                    receiversList: [
+                    contactsList: [
                         'MessagesService',
                         function (MessagesService) {
                             return MessagesService.contactsList();
