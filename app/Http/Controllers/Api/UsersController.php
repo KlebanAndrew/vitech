@@ -6,6 +6,7 @@ use App\Repositories\UserMessagesRepository;
 use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -26,8 +27,17 @@ class UsersController extends Controller
         $this->usersRepository = $usersRepository;
     }
 
-    public function getUsersList()
+    /**
+     * Get users list for auth user
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getContacts()
     {
-        $data = $this->usersRepository->getAll();
+        $user = Auth::user();
+
+        $data = $this->usersRepository->getUserContactsList($user);
+
+        return response()->json($data);
     }
 }

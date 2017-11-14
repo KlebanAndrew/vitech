@@ -12,8 +12,15 @@ use App\User;
 
 class UsersRepository
 {
-    public function getAll()
+    /**
+     * Get list of users except Auth user
+     *
+     * @param $user
+     *
+     * @return mixed
+     */
+    public function getUserContactsList($user)
     {
-        return User::all();
+        return User::where('id', '<>', $user->id)->get();
     }
 }
