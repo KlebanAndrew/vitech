@@ -16,68 +16,9 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333">
     <meta name="theme-color" content="#ffffff">
 
-<!-- injector:js-->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/perfect-scrollbar/min/perfect-scrollbar.min.js"></script>
-    <script src="/bower_components/photoswipe/dist/photoswipe.js"></script>
-    <script src="/bower_components/photoswipe/dist/photoswipe-ui-default.min.js"></script>
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/bower_components/ngDialog/js/ngDialog.min.js"></script>
-    <script src="/bower_components/underscore/underscore-min.js"></script>
-    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
-    <script src="/bower_components/angular-file-upload/angular-file-upload.min.js"></script>
-    <script src="/bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
-    <script src="/bower_components/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js"></script>
-    <script src="/bower_components/angular-notification/angular-notification.min.js"></script>
-    <script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
-    <script src="/bower_components/angular-bootstrap-datepicker/dist/angular-bootstrap-datepicker.min.js"></script>
-    <script src="/bower_components/summernote/dist/summernote.js"></script>
-    <script src="/bower_components/angular-summernote/dist/angular-summernote.js"></script>
-    <script src="/bower_components/moment/moment.js"></script>
-    <script src="/bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
-    <script src="/bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
-    <!-- endinjector-->
+    <script src="/build/js/scripts.js"></script>
 
-    <!-- inject:app:js-->
-    <script src="/app/filters/common.js"></script>
-    <script src="/app/app.js"></script>
-    <script src="/app/services/services.js"></script>
-    <script src="/app/directives/main/main.js"></script>
-    <script src="/app/components/directives.js"></script>
-    <script src="/app/components/pagination/pagination.js"></script>
-    <script src="/app/components/notify.js"></script>
-    <script src="/app/modules/navbar/navbar.js"></script>
-    <script src="/app/modules/messages/messages.mdl.js"></script>
-    <script src="/app/modules/messages/messages.srv.js"></script>
-    <script src="/app/modules/messages/messages.ctr.js"></script>
-    <script src="/js/sidebar.js"></script>
-    <!-- endinject-->
-
-    <!-- injector:css-->
-    <link rel="stylesheet" href="/bower_components/perfect-scrollbar/min/perfect-scrollbar.min.css">
-    <link rel="stylesheet" href="/bower_components/photoswipe/dist/photoswipe.css">
-    <link rel="stylesheet" href="/bower_components/photoswipe/dist/default-skin/default-skin.css">
-    <link rel="stylesheet" href="/bower_components/ngDialog/css/ngDialog.min.css">
-    <link rel="stylesheet" href="/bower_components/ngDialog/css/ngDialog-theme-default.min.css">
-    <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.min.css">
-    <link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
-    <link rel="stylesheet" href="/bower_components/angular-bootstrap-datepicker/dist/angular-bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/bower_components/summernote/dist/summernote.css">
-    <link rel="stylesheet" href="/bower_components/isteven-angular-multiselect/isteven-multi-select.css">
-    <link rel="stylesheet" href="/bower_components/angularjs-datepicker/dist/angular-datepicker.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/pace-theme-flash.css">
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <link rel="stylesheet" href="/fonts/font-fontello/css/fontello.css">
-    <link rel="stylesheet" href="/css/pages.css">
-    <link rel="stylesheet" href="/css/pages-icons.css">
-    <!-- endinjector-->
-
-    <!-- BEGIN CSS TEMPLATE -->
-<!-- END CSS TEMPLATE -->
+    <link rel="stylesheet" href="/build/css/styles.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,8 +27,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
-
 
 <body class="fixed-header ">
 <nav-bar></nav-bar>
