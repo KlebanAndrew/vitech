@@ -28,6 +28,7 @@
     "public/app/directives/main/main.js",
     "public/app/components/directives.js",
     "public/app/components/pagination/pagination.js",
+    "public/app/components/general/general.js",
     "public/app/components/notify.js",
     "public/app/services/services.js",
     "public/app/modules/navbar/navbar.js",

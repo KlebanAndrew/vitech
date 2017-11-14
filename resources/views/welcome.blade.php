@@ -47,21 +47,9 @@
                         </div>
                     </button>
                     <ul class="dropdown-menu profile-dropdown" role="menu">
-                        @if (Auth::guest())
-                            <li>
-                                <a href="/auth/login" target="_self"><i class="pg-settings_small"></i> Login</a>
-                            </li>
-                            <li>
-                                <a href="/auth/register" target="_self"><i class="pg-outdent"></i> Register</a>
-                            </li>
-                        @else
                             <li class="bg-master-lighter" style="margin-top: 0px;">
-                                <a href="/auth/logout" target="_self" class="clearfix">
-                                    <span class="pull-left">Logout</span>
-                                    <span class="pull-right"><i class="pg-power"></i></span>
-                                </a>
+                                <auth-logout-button></auth-logout-button>
                             </li>
-                        @endif
                     </ul>
                 </div>
             </div>

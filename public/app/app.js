@@ -17,6 +17,8 @@
         'filters',//filters
         'shared.notify',//service for notification
 
+        'app.components.general',//general components
+
         //modules
         'app.messages'//home page
     ])
