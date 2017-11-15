@@ -123,6 +123,9 @@
                 if (vm.type == 'draft') {
                     return $state.go('messages.draft', {id:item.id});
                 }
+
+                item.type = vm.type;
+
                 vm.selectedMessage = item;
             }
 
@@ -137,6 +140,9 @@
 
                     if(vm.items.length){
                         vm.selectedMessage = _.first(vm.items, 1)[0];
+                        vm.selectedMessage.type = vm.type;
+                    } else {
+                        vm.selectedMessage = {};
                     }
                 });
             }

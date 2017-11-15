@@ -1,6 +1,12 @@
 <div class="row m-t-20 bordered">
-    <div class="col-md-24">
+    <div class="col-md-24" ng-if="$ctrl.message.type == 'inbox'">
         {{ $ctrl.message.sender.email }}
+    </div>
+    <div class="col-md-24" ng-if="$ctrl.message.type == 'send'">
+        <span ng-repeat="item in $ctrl.message.receivers">
+            {{ item.email }}&nbsp;
+        </span>
+
     </div>
     <div class="col-md-24">
         {{ $ctrl.message.subject }}

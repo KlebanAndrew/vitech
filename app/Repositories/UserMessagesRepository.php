@@ -21,7 +21,7 @@ class UserMessagesRepository
      */
     public function getSendList($user)
     {
-        return $user->sentMessages()->with('sender', 'files')->paginate(100);
+        return $user->sentMessages()->with('sender', 'files', 'receivers')->paginate(100);
     }
 
     /**
