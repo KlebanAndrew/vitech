@@ -1,5 +1,5 @@
 # Test app
-UI for send messages system
+UI for send messages system (For more info please read info.md)
 
 ## Table of contents
 * [Get the source code](#get-the-source-code)
