@@ -20,7 +20,6 @@ class UserMessage extends Model
      * @var array
      */
     protected $fillable = [
-        'id',
         'sender_id',
         'subject',
         'is_draft',

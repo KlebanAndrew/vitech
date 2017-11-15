@@ -56,15 +56,27 @@
 
             vm.$onInit = function () {
                 window.onunload = function () {
-                    if (!vm.created) {
+                    if (!vm.created && !vm.message.is_draft) {
                         MessagesService.saveDraft(vm.message);
                     }
                 };
+                
+                if(vm.message){
+                    angular.forEach(vm.contacts, function (value, key) {
+                        value.selected = false;
+
+                        angular.forEach(vm.message.receivers, function (catval, catkey) {
+                            if (value.id == catval.id) {
+                                value.selected = true;
+                            }
+                        });
+                    });
+                }
             };
 
             //init function
             vm.$onDestroy = function () {
-                if (!vm.created) {
+                if (!vm.created && !vm.message.is_draft) {
                     MessagesService.saveDraft(vm.message);
                 }
             };

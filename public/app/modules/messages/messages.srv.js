@@ -29,7 +29,7 @@
          * @returns {*}
          */
         function contactsListFn() {
-            return $http.get('api/contacts');
+            return $http.get('/api/contacts');
         }
 
         /**
@@ -40,7 +40,7 @@
         function getSendMessagesListFn(page) {
             page = page || 1;
 
-            return $http.get('api/messages/send', {page: page});
+            return $http.get('/api/messages/send', {page: page});
         }
 
         /**
@@ -51,7 +51,7 @@
         function getInboxMessagesListFn(page) {
             page = page || 1;
 
-            return $http.get('api/messages/inbox', {page: page});
+            return $http.get('/api/messages/inbox', {page: page});
         }
 
         /**
@@ -62,7 +62,7 @@
         function getDraftMessagesListFn(page) {
             page = page || 1;
 
-            return $http.get('api/messages/draft', {page: page});
+            return $http.get('/api/messages/draft', {page: page});
         }
 
         /**
@@ -98,7 +98,7 @@
                 return false;
             }
 
-            return $http.get('api/messages/' + id + '/edit');
+            return $http.get('/api/messages/' + id + '/edit');
         }
 
         /**
@@ -116,7 +116,7 @@
                 return false;
             }
 
-            return $http.post('api/messages/draft', draft);
+            return $http.post('/api/messages/draft', draft);
         }
 
         /**

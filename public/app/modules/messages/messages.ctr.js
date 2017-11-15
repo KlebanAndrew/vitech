@@ -40,7 +40,6 @@
 
         vm.message = Item.data;
         vm.contacts = contactsList.data;
-
     }
 
 })();
