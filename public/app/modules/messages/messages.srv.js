@@ -16,7 +16,7 @@
             getInboxMessagesList: getInboxMessagesListFn,
             getDraftMessagesList: getDraftMessagesListFn,
             getMessagesListByType: getMessagesListByTypeFn,
-            getMessage: getMessageFn,
+            saveDraft: saveDraftFn,
             formatDate: formatDateFn
         };
 
@@ -91,14 +91,23 @@
                     break;
             }
         }
+
         /**
-         * Get message
+         * Save message as draft
          *
-         * @param id
-         * @returns {*}
+         * @param draft
+         * @returns {boolean}
          */
-        function getMessageFn(id) {
-            return $http.get(baseUrl + '/' + id);
+        function saveDraftFn(draft) {
+            if(!draft){
+                return false;
+            }
+
+            if(!draft.text && !draft.subject) {
+                return false;
+            }
+
+            return $http.post('api/messages/draft', draft);
         }
 
         /**

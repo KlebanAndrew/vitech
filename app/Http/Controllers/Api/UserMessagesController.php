@@ -103,6 +103,20 @@ class UserMessagesController extends Controller
         return response()->json('Saved');
     }
 
+    public function storeDraft(Request $request)
+    {
+        $data = $request->all();
+        $user = Auth::user();
+
+        $result = $this->userMessagesRepository->createMessageDraft($data, $user);
+
+        if (!$result) {
+            return response()->json('Not saved', 400);
+        }
+
+        return response()->json('Saved');
+    }
+
     /**
      * todo move to Files controller
      *

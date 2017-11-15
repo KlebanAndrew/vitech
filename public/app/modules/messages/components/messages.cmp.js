@@ -44,22 +44,37 @@
 
     var createMessage = {
         bindings: {
-            contacts: '<'
+            contacts: '<',
+            message: '<'
         },
         templateUrl: '/app/modules/messages/components/create_message.html',
 
-        controller: function ($state, HttpService) {
+        controller: function ($state, HttpService, MessagesService) {
             var vm = this;
 
-            //init function
-            vm.$onInit = function () {
+            vm.created = false;
 
+            vm.$onInit = function () {
+                window.onunload = function () {
+                    if (!vm.created) {
+                        MessagesService.saveDraft(vm.message);
+                    }
+                };
+            };
+
+            //init function
+            vm.$onDestroy = function () {
+                if (!vm.created) {
+                    MessagesService.saveDraft(vm.message);
+                }
             };
 
             vm.sendMessage = sendMessage;
 
             function sendMessage() {
                 HttpService.post('/api/messages', vm.message, function (resp) {
+                    vm.created = true;
+
                     $state.go('messages.list');
                 }, function (errors) {
                     vm.errors = errors.errors;
@@ -134,7 +149,7 @@
         controller: function (HttpService, Notify, FileUploader) {
             var vm = this;
 
-            if(!angular.isDefined(vm.files)) {
+            if (!angular.isDefined(vm.files)) {
                 vm.files = [];
             }
 
@@ -147,9 +162,9 @@
                 filters: [
                     {
                         name: 'limit',
-                        fn: function() {
+                        fn: function () {
                             //Check for limit files if defined
-                            if(vm.files.length < 2) {
+                            if (vm.files.length < 2) {
                                 return true;
                             } else {
                                 Notify.alert('Max file number');
@@ -174,19 +189,19 @@
             });
 
             // Cancel upload
-            vm.cancelFile = function(file) {
+            vm.cancelFile = function (file) {
                 vm.files.splice(_.indexOf(vm.files, file), 1);
             };
 
             // Remove file
-            vm.removeFile = function(index) {
+            vm.removeFile = function (index) {
                 Notify.confirm(function () {
-                // Fore delete of file
-                HttpService.delete('/api/file/delete/' + vm.files[index].token).success(function (resp) {
-                    vm.files.splice(index, 1);
-                }).error(function (error) {
-                    vm.profileLoad = false;
-                });
+                    // Fore delete of file
+                    HttpService.delete('/api/file/delete/' + vm.files[index].token).success(function (resp) {
+                        vm.files.splice(index, 1);
+                    }).error(function (error) {
+                        vm.profileLoad = false;
+                    });
 
                 }, 'Confirm?');
             };

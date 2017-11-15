@@ -12,7 +12,7 @@
         <a href="/api/file/download/{{ file.token }}" target="_blank">Download {{ file.name }}</a>
     </div>
 </div>
-<div class="row m-t-20 bordered m-t-5">
+<div class="row m-t-20 bordered m-t-5" ng-show="!$ctrl.message.is_draft">
         <div class="col-md-24">
             <div class="form-group form-textarea">
                 <div id="summernote">
@@ -31,8 +31,7 @@
         <div class="col-md-2 col-md-offset-22">
             <button ng-click="$ctrl.sendReply()" class="btn btn-success">Send</button>
         </div>
+    <upload-file
+        files="$ctrl.reply.files"
+    ></upload-file>
 </div>
-
-<upload-file
-    files="$ctrl.reply.files"
-></upload-file>

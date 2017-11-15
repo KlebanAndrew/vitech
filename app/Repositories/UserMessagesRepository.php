@@ -61,7 +61,7 @@ class UserMessagesRepository
         ]);
 
         if ($message) {
-            if(array_get($data, 'files')){
+            if (array_get($data, 'files')) {
                 $this->setFile($message->id, $data['files'][0]['id']);
             }
 
@@ -72,6 +72,38 @@ class UserMessagesRepository
 
         return false;
     }
+
+    /**
+     * Save draft
+     *
+     * @param $data
+     * @param $user
+     *
+     * @return bool
+     */
+    public function createMessageDraft($data, $user)
+    {
+        $data['sender_id'] = $user->id;
+        $data['is_draft'] = 1;
+
+        $message = UserMessage::create($data);
+
+        if ($message) {
+            if (array_get($data, 'files')) {
+                $this->setFile($message->id, $data['files'][0]['id']);
+            }
+
+            if(array_get($data, 'receivers')){
+                $receivers = $this->makePivotArray($data['receivers']);
+                $message->receivers()->sync($receivers);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @param $data
      * @param $user
@@ -87,7 +119,7 @@ class UserMessagesRepository
         ]);
 
         if ($message) {
-            if(array_get($data, 'files')){
+            if (array_get($data, 'files')) {
                 $this->setFile($message->id, $data['files'][0]['id']);
             }
 
@@ -102,6 +134,7 @@ class UserMessagesRepository
 
     /**
      * Save file  todo move to Files repository
+     *
      * @param $data
      *
      * @return mixed
