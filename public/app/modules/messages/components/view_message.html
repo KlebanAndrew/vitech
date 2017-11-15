@@ -8,6 +8,9 @@
     <div class="col-md-24">
         {{ $ctrl.message.text }}
     </div>
+    <div class="col-md-24" ng-repeat="file in $ctrl.message.files">
+        <a href="/api/file/download/{{ file.token }}" target="_blank">Download {{ file.name }}</a>
+    </div>
 </div>
 <div class="row m-t-20 bordered m-t-5">
         <div class="col-md-24">

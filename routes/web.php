@@ -12,6 +12,7 @@ Route::group([
     Route::get('/contacts', 'Api\UsersController@getContacts');
 
     Route::post('/file/upload', 'Api\UserMessagesController@uploadFile');
+    Route::get('/file/download/{token}', 'Api\UserMessagesController@downloadFile');
     Route::delete('/file/delete/{token}', 'Api\UserMessagesController@deleteFile');
 
     Route::post('/messages', 'Api\UserMessagesController@store');

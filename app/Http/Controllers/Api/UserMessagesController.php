@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreMessageReplyRequest;
 use App\Http\Requests\StoreUserMessageRequest;
 use App\Http\Requests\UploadFileRequest;
+use App\Model\File;
 use App\Repositories\UserMessagesRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -128,6 +129,15 @@ class UserMessagesController extends Controller
         return response()->json($file);
     }
 
+    /**
+     * @param $token
+     */
+    public function downloadFile($token)
+    {
+        $file = File::where('token', $token)->first();
+
+        return \Response::download(base_path() . '/public/assets/' .$file->token . '.'.$file->ext, $file->name);
+    }
     /**
      * @param $token
      *
