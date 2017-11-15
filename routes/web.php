@@ -11,6 +11,8 @@ Route::group([
 ], function () {
     Route::get('/contacts', 'Api\UsersController@getContacts');
 
+    Route::post('/file/upload', 'Api\UserMessagesController@uploadFile');
+
     Route::post('/messages', 'Api\UserMessagesController@store');
     Route::post('/messages/reply', 'Api\UserMessagesController@storeReply');
     Route::get('/messages/send', 'Api\UserMessagesController@sendList');

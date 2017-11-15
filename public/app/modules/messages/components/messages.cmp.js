@@ -18,7 +18,7 @@
              * Send reply for message
              */
             function sendReply() {
-                if(_.isUndefined(vm.reply.text) || vm.reply.text == ''){
+                if (_.isUndefined(vm.reply.text) || vm.reply.text == '') {
                     Notify.warning('Write something');
 
                     return;
@@ -124,11 +124,80 @@
         }
     };
 
+    var uploadFile = {
+        bindings: {
+            files: '='
+        },
+        templateUrl: '/app/modules/messages/components/upload_file.html',
+
+        controller: function (HttpService, Notify, FileUploader) {
+            var vm = this;
+
+            if(!angular.isDefined(vm.files)) {
+                vm.files = [];
+            }
+
+            vm.uploader = new FileUploader({
+                url: '/api/file/upload',
+                //headers: { "Authorization": 'Bearer ' + BACKEND_CFG.jwt},
+                autoUpload: true,
+                removeAfterUpload: true,
+                queueLimit: 1,
+                filters: [
+                    {
+                        name: 'limit',
+                        fn: function() {
+                            //Check for limit files if defined
+                            if(vm.files.length < 2) {
+                                return true;
+                            } else {
+                                Notify.alert('Max file number');
+                            }
+                        }
+                    }
+                ],
+                onBeforeUploadItem: function () {
+                },
+                onProgressAll: function (progress) {
+                    vm.progress = progress;
+                },
+                onCompleteItem: function (item, response, status, headers) {
+                    vm.files.push(response);
+                },
+                onErrorItem: function (item, response) {
+                    Notify.alert(response.message ? response.message : 'Something went wrong. Please refresh page and try again.');
+                },
+                onCompleteAll: function () {
+                    vm.progress = 0;
+                }
+            });
+
+            // Cancel upload
+            vm.cancelFile = function(file) {
+                vm.files.splice(_.indexOf(vm.files, file), 1);
+            };
+
+            // Remove file
+            vm.removeFile = function(index) {
+                Notify.confirm(function () {
+                // Fore delete of file
+                HttpService.delete('/api/files/delete/' + vm.files[index].token).success(function (resp) {
+                    vm.files.splice(index, 1);
+                }).error(function (error) {
+                    vm.profileLoad = false;
+                });
+
+                }, 'Confirm?');
+            };
+        }
+
+    };
     angular
         .module('app.messages.components', [])
         .component('viewMessage', viewMessage)
         .component('createMessage', createMessage)
         .component('messagesList', messagesList)
+        .component('uploadFile', uploadFile)
     ;
 
 })();

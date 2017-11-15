@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreMessageReplyRequest;
 use App\Http\Requests\StoreUserMessageRequest;
+use App\Http\Requests\UploadFileRequest;
 use App\Repositories\UserMessagesRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -82,6 +83,11 @@ class UserMessagesController extends Controller
         return response()->json('Saved');
     }
 
+    /**
+     * @param StoreMessageReplyRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function storeReply(StoreMessageReplyRequest $request)
     {
         $data = $request->all();
@@ -94,5 +100,28 @@ class UserMessagesController extends Controller
         }
 
         return response()->json('Saved');
+    }
+
+    /**
+     * todo move to Files controller
+     * @param UploadFileRequest $request
+     */
+    public function uploadFile(UploadFileRequest $request)
+    {
+        $data = [
+            'name' => $request->file('file')->getClientOriginalName(),
+            'ext' => $request->file('file')->getClientOriginalExtension(),
+        ];
+
+        //todo move function to files repository
+        $file = $this->userMessagesRepository->saveFile($data);
+
+        $fileName = $file->token .'.'. $request->file('file')->getClientOriginalExtension();
+
+        $request->file('file')->move(
+            base_path() . '/public/assets', $fileName
+        );
+
+        return response()->json($file);
     }
 }

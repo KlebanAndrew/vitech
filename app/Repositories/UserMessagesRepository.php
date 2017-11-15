@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use App\Model\File;
 use App\Model\UserMessage;
 
 class UserMessagesRepository
@@ -81,6 +82,27 @@ class UserMessagesRepository
         }
 
         return false;
+    }
+
+    /**
+     * Save file  todo move to Files repository
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function saveFile($data)
+    {
+        //generate token
+        $token = strtolower(str_random(12));
+
+        while (File::where('token', $token)->exists()) {
+            $token = strtolower(str_random(12));
+        }
+        $data['token'] = $token;
+
+        $file = File::create($data);
+
+        return $file;
     }
 
     /**
