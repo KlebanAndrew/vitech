@@ -21,7 +21,7 @@ class UserMessagesRepository
      */
     public function getSendList($user)
     {
-        return $user->sentMessages()->with('sender', 'files')->paginate();
+        return $user->sentMessages()->with('sender', 'files')->paginate(100);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserMessagesRepository
      */
     public function getInboxList($user)
     {
-        return $user->receivedMessages()->with('sender', 'files')->paginate();
+        return $user->receivedMessages()->with('sender', 'files')->paginate(100);
     }
 
     /**
@@ -41,7 +41,7 @@ class UserMessagesRepository
      */
     public function getDraftList($user)
     {
-        return $user->draftMessages()->with('sender', 'files')->paginate();
+        return $user->draftMessages()->with('sender', 'files')->paginate(100);
     }
 
     /**
@@ -87,6 +87,10 @@ class UserMessagesRepository
         ]);
 
         if ($message) {
+            if(array_get($data, 'files')){
+                $this->setFile($message->id, $data['files'][0]['id']);
+            }
+
             $receivers = $this->makePivotArray($data['receivers']);
             $message->receivers()->sync($receivers);
 

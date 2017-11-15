@@ -27,6 +27,7 @@ class StoreUserMessageRequest extends FormRequest
             'subject'   => 'required|string',
             'text'      => 'required|string',
             'receivers' => 'required|array|min:1',
+            'files'     => 'array',
         ];
     }
 }
