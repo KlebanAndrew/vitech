@@ -52,6 +52,15 @@ class UserMessage extends Model
     }
 
     /**
+     * Get message files
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function files()
+    {
+        return $this->hasMany(File::class, 'parent_id');
+    }
+    /**
      * Get receivers for message
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

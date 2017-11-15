@@ -24,9 +24,10 @@ class StoreMessageReplyRequest extends FormRequest
     public function rules()
     {
         return [
-            'subject'   => 'required|string',
-            'text'      => 'required|string',
+            'subject'  => 'required|string',
+            'text'     => 'required|string',
             'receiver' => 'required|array',
+            'file'     => 'array',
         ];
     }
 }

@@ -27,7 +27,8 @@
                 var message = {
                     text: vm.reply.text,
                     subject: 'Subject',
-                    receiver: vm.message.sender
+                    receiver: vm.message.sender,
+                    files: vm.reply.files
                 };
 
                 HttpService.post('/api/messages/reply', message, function (resp) {
@@ -181,7 +182,7 @@
             vm.removeFile = function(index) {
                 Notify.confirm(function () {
                 // Fore delete of file
-                HttpService.delete('/api/files/delete/' + vm.files[index].token).success(function (resp) {
+                HttpService.delete('/api/file/delete/' + vm.files[index].token).success(function (resp) {
                     vm.files.splice(index, 1);
                 }).error(function (error) {
                     vm.profileLoad = false;

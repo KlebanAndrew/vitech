@@ -104,7 +104,10 @@ class UserMessagesController extends Controller
 
     /**
      * todo move to Files controller
+     *
      * @param UploadFileRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function uploadFile(UploadFileRequest $request)
     {
@@ -123,5 +126,15 @@ class UserMessagesController extends Controller
         );
 
         return response()->json($file);
+    }
+
+    /**
+     * @param $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteFile($token)
+    {
+        return response()->json('deleted');
     }
 }
