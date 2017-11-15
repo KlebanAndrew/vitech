@@ -17,6 +17,7 @@ Route::group([
 
     Route::post('/messages', 'Api\UserMessagesController@store');
     Route::post('/messages/reply', 'Api\UserMessagesController@storeReply');
+    Route::get('/messages/{id}/edit', 'Api\UserMessagesController@getDraft');
     Route::post('/messages/draft', 'Api\UserMessagesController@storeDraft');
     Route::get('/messages/send', 'Api\UserMessagesController@sendList');
     Route::get('/messages/inbox', 'Api\UserMessagesController@inboxList');

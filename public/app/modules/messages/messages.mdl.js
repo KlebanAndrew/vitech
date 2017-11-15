@@ -50,7 +50,7 @@
                 }
             })
             .state('messages.draft', {
-                url: 'draft',
+                url: 'draft/:id',
                 views: {
                     content: {
                         controller: 'MessagesCtrl.draft as ctrl',
@@ -58,6 +58,13 @@
                     }
                 },
                 resolve: {
+                    Item: [
+                        'MessagesService',
+                        '$stateParams',
+                        function (MessagesService, $stateParams) {
+                            return MessagesService.getDraft($stateParams.id);
+                        }
+                    ],
                     contactsList: [
                         'MessagesService',
                         function (MessagesService) {

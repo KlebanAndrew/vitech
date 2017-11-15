@@ -121,7 +121,7 @@
              */
             function selectMessage(item) {
                 if (vm.type == 'draft') {
-                    return $state.go('messages.draft');
+                    return $state.go('messages.draft', {id:item.id});
                 }
                 vm.selectedMessage = item;
             }
@@ -134,7 +134,10 @@
                     vm.items = resp.data;
                     vm.totalPages = resp.last_page;
                     vm.page += 1;
-                    vm.selectedMessage = _.first(vm.items, 1)[0];
+
+                    if(vm.items.length){
+                        vm.selectedMessage = _.first(vm.items, 1)[0];
+                    }
                 });
             }
         }

@@ -16,6 +16,7 @@
             getInboxMessagesList: getInboxMessagesListFn,
             getDraftMessagesList: getDraftMessagesListFn,
             getMessagesListByType: getMessagesListByTypeFn,
+            getDraft: getDraftFn,
             saveDraft: saveDraftFn,
             formatDate: formatDateFn
         };
@@ -90,6 +91,14 @@
                     return getInboxMessagesListFn(page);
                     break;
             }
+        }
+
+        function getDraftFn(id) {
+            if(!id){
+                return false;
+            }
+
+            return $http.get('api/messages/' + id + '/edit');
         }
 
         /**

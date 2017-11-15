@@ -45,6 +45,18 @@ class UserMessagesRepository
     }
 
     /**
+     * Get draft by id todo refactor
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getDraft($id)
+    {
+        return UserMessage::where('id', $id)->with('receivers', 'files')->first();
+    }
+
+    /**
      * Create message reply
      *
      * @param $data

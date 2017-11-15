@@ -103,6 +103,11 @@ class UserMessagesController extends Controller
         return response()->json('Saved');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function storeDraft(Request $request)
     {
         $data = $request->all();
@@ -117,6 +122,19 @@ class UserMessagesController extends Controller
         return response()->json('Saved');
     }
 
+    /**
+     * Get draft by id
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDraft($id)
+    {
+        $draft = $this->userMessagesRepository->getDraft($id);
+
+        return response()->json($draft);
+    }
     /**
      * todo move to Files controller
      *
