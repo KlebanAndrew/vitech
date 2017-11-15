@@ -1,5 +1,5 @@
 # Test app
-UI for send messages system (For more info please read info.md)
+UI for send messages system (For more info please read **info.md**)
 
 ## Table of contents
 * [Get the source code](#get-the-source-code)
@@ -10,11 +10,7 @@ UI for send messages system (For more info please read info.md)
     * [Prerequisites](#prerequisites)
     * [Building](#building)
 * [Deployment](#deployment)
-* [Tests (optional)](#tests-optional)
-* [Style Guide (optional)](#style-guide-optional)
-* [API Reference (optional)](#api-reference-optional)
 * [Database (optional)](#database-optional)
-* [License](#license)
 
 
 ## Get the Source Code

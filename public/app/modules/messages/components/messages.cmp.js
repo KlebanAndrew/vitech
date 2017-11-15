@@ -111,6 +111,7 @@
     };
 
     /**
+     * Show messages list by type
      *
      * @type {{bindings: {type: string, selectedMessage: string}, templateUrl: string, controller: controller}}
      */
