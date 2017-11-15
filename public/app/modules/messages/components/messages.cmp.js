@@ -1,9 +1,14 @@
 (function () {
     'use strict';
 
+    /**
+     * View message component
+     *
+     * @type {{bindings: {message: string}, templateUrl: string, controller: controller}}
+     */
     var viewMessage = {
         bindings: {
-            message: '<'
+            message: '<'//message object
         },
         templateUrl: '/app/modules/messages/components/view_message.html',
 
@@ -42,10 +47,15 @@
         }
     };
 
+    /**
+     * Create message component
+     *
+     * @type {{bindings: {contacts: string, message: string}, templateUrl: string, controller: controller}}
+     */
     var createMessage = {
         bindings: {
-            contacts: '<',
-            message: '<'
+            contacts: '<',//list of user contacts
+            message: '<'//message object for drafts
         },
         templateUrl: '/app/modules/messages/components/create_message.html',
 
@@ -55,6 +65,7 @@
             vm.created = false;
 
             vm.$onInit = function () {
+                //save as draft on reload
                 window.onunload = function () {
                     if (!vm.created && !vm.message.is_draft) {
                         MessagesService.saveDraft(vm.message);
@@ -76,6 +87,7 @@
 
             //init function
             vm.$onDestroy = function () {
+                //save as draft on state change
                 if (!vm.created && !vm.message.is_draft) {
                     MessagesService.saveDraft(vm.message);
                 }
@@ -83,6 +95,9 @@
 
             vm.sendMessage = sendMessage;
 
+            /**
+             * Store message
+             */
             function sendMessage() {
                 HttpService.post('/api/messages', vm.message, function (resp) {
                     vm.created = true;
@@ -95,10 +110,14 @@
         }
     };
 
+    /**
+     *
+     * @type {{bindings: {type: string, selectedMessage: string}, templateUrl: string, controller: controller}}
+     */
     var messagesList = {
         bindings: {
-            type: '<',
-            selectedMessage: '='
+            type: '<',//message type
+            selectedMessage: '='//here put message selected by user
         },
         templateUrl: '/app/modules/messages/components/messages_list.html',
 
@@ -113,6 +132,7 @@
                     vm.type = 'inbox';
                 }
 
+                //get messages list by type
                 getMessages();
             };
 
@@ -161,9 +181,14 @@
         }
     };
 
+    /**
+     * Upload file component
+     *
+     * @type {{bindings: {files: string}, templateUrl: string, controller: controller}}
+     */
     var uploadFile = {
         bindings: {
-            files: '='
+            files: '='//file info
         },
         templateUrl: '/app/modules/messages/components/upload_file.html',
 
@@ -174,6 +199,9 @@
                 vm.files = [];
             }
 
+            /**
+             * File uploader
+             */
             vm.uploader = new FileUploader({
                 url: '/api/file/upload',
                 //headers: { "Authorization": 'Bearer ' + BACKEND_CFG.jwt},

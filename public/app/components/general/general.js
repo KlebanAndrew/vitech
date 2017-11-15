@@ -29,6 +29,11 @@
         }
     };
 
+    /**
+     * Content header
+     *
+     * @type {{bindings: {}, templateUrl: string, controller: controller}}
+     */
     var contentHeader = {
         bindings: {
 

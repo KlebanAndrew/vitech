@@ -93,6 +93,12 @@
             }
         }
 
+        /**
+         * Get draft by id
+         *
+         * @param id
+         * @returns {boolean}
+         */
         function getDraftFn(id) {
             if(!id){
                 return false;
