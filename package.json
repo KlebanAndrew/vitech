@@ -1,13 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-poll": "npm run watch -- --watch-poll",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "server": "json-server --watch db.json --port 3004 --routes routes.json"
   },
   "devDependencies": {
     "angular-bootstrap": "^0.12.2",
@@ -22,8 +16,10 @@
     "browser-sync": "latest",
     "cross-env": "^5.0.1",
     "event-stream": "latest",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-injector": "^1.1.0",
     "jquery": "^3.1.1",
+    "json-server": "^0.12.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.2",

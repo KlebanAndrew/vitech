@@ -31,12 +31,24 @@ module.exports = function(grunt) {
             'resources/views/welcome.blade.php': {
                 files: js.concat(css)
             }
+        },
+        copy: {
+            main: {
+                files: [
+                    // includes files within path
+                    {expand: true, flatten: true, src: ['public/fonts/*'], dest: 'public/build/fonts', filter: 'isFile'},
+
+                ]
+            }
         }
+
     });
 
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-injector');
     grunt.registerTask('default', 'concat');
+    grunt.registerTask('fonts', 'copy');
 
 };

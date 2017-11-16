@@ -167,9 +167,8 @@
              */
             function getMessages() {
                 MessagesService.getMessagesListByType(vm.type, vm.page).success(function (resp) {
-                    vm.items = resp.data;
-                    vm.totalPages = resp.last_page;
-                    vm.page += 1;
+                    vm.items = resp;
+                    console.log(resp);
 
                     if(vm.items.length){
                         vm.selectedMessage = _.first(vm.items, 1)[0];
