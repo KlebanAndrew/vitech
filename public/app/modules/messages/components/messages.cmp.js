@@ -227,7 +227,16 @@
                     vm.progress = progress;
                 },
                 onCompleteItem: function (item, response, status, headers) {
-                    vm.files.push(response);
+                    //for fake file upload (for Js server)
+                    var fakeItem = {
+                        id:response.id,
+                        name: item.file.name,
+                        token: response.id
+                    };
+                    vm.files.push(fakeItem);
+
+                    //uncomment while do backend
+                    // vm.files.push(response);
                 },
                 onErrorItem: function (item, response) {
                     Notify.alert(response.message ? response.message : 'Something went wrong. Please refresh page and try again.');

@@ -41,7 +41,7 @@ class UserMessagesRepository
      */
     public function getDraftList($user)
     {
-        return $user->draftMessages()->with('sender', 'files')->paginate(100);
+        return $user->draftMessages()->with('sender', 'files', 'receivers')->paginate(100);
     }
 
     /**

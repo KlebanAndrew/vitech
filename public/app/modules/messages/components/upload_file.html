@@ -8,7 +8,7 @@
     </div>
     <div class="m-attachment__preview" ng-repeat="file in $ctrl.files">
         <div>{{ file.name }}</div>
-        <div  ng-if="file.ext.toLowerCase()" class="fo-delete">
+        <div class="fo-delete">
             <a class="icon-cancel" ng-click="$ctrl.removeFile($index)">Delete</a>
         </div>
     </div>
